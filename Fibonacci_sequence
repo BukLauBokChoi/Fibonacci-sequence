@@ -1,0 +1,24 @@
+# This is a fibonacci sequence created using recursion and memoization
+
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1000)
+def fibonacci(n):
+    # Check that n is a natural number
+    if type(n) != int:
+        raise TypeError("n must be an positive interger!")
+    if n < 1:
+        raise ValueError("n must be a positive interger!")
+
+    # Compute the Nth term
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 1
+    elif n < 2:
+        return (fibonacci(n - 1)) + (fibonacci(n - 2))
+
+
+for n in range(1, 11):
+    print(fibonacci(n))
